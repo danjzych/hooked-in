@@ -1,8 +1,12 @@
 {
   "name": "hooked-in",
   "version": "0.0.0",
-  "description": "",
+  "description": "Collection of utility, effect, and headless component hooks for React and Svelte.",
   "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
+  "namespace": "@hooked-in",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc",

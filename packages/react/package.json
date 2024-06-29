@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/dom": "^10.1.0",
+    "@testing-library/react": "^16.0.0",
     "@types/react": "^18.3.3",
+    "@types/testing-library__jest-dom": "^6.0.0",
+    "jsdom": "^24.1.0",
     "react": "^18.3.1"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.1"
   }
 }

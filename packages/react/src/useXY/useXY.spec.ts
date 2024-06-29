@@ -5,6 +5,6 @@ import useXY from './useXY';
 describe('useXY', () => {
 	it('should return cursor position', () => {
 		const { result } = renderHook(useXY);
-		console.log(result);
+		expect(result.current).toEqual({ x: 0, y: 0 });
 	});
 });

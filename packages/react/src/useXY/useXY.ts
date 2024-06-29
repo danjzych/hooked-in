@@ -16,8 +16,10 @@ const useXY = (): CursorPosition => {
 
 	useEffect(() => {
 		window.addEventListener('mousemove', updateCursorPosition);
-		return window.removeEventListener('mousemove', updateCursorPosition);
-	});
+
+		return () =>
+			window.removeEventListener('mousemove', updateCursorPosition);
+	}, []);
 
 	return {
 		x: pos.x,

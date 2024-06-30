@@ -10,8 +10,9 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc",
-    "test": "vitest run",
-    "test:watch": "vitest ts --passWithNoTests --reporter=verbose",
+    "test:all": "npm run test:react && npm run test:svelte",
+    "test:react": "cd packages/react && npm run test",
+    "test:svelte": "cd packages/svelte && npm run test",
     "release": "npm run lint && npm run test && npm run build && npx changeset publish"
   },
   "keywords": [],
@@ -22,7 +23,6 @@
     "prettier": "3.3.2",
     "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
-    "typescript": "^5.5.2",
-    "vitest": "^1.6.0"
+    "typescript": "^5.5.2"
   }
 }

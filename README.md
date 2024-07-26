@@ -1,3 +1,3 @@
-# hooked-in
+<h1>@hooked-in</h1>
 
-<p>WIP</p>
+<p>Collection of utility, effect, and headless component hooks for React and Svelte. <em>Work in progress.</em></p>

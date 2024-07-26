@@ -1,12 +1,13 @@
-import { useXY } from '@hooked-in/react';
 import './App.css'
+import XY from './components/XY'
 
 function App() {
-  const {x, y} = useXY()
 
-  return (
-    <p>Cursor position is {x}, {y}.</p>
-  )
+  return (<>
+  <h1>@hooked-in/react</h1>
+    <XY />
+  </>)
+
 }
 
 export default App

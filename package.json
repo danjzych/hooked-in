@@ -2,7 +2,12 @@
   "name": "hooked-in",
   "version": "0.0.0",
   "description": "Collection of utility, effect, and headless component hooks for React and Svelte.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "workspaces": [
     "packages/*"
   ],
@@ -24,5 +29,8 @@
     "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
     "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@hooked-in/react": "^0.0.0"
   }
 }

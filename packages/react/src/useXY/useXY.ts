@@ -8,7 +8,7 @@ interface CursorPosition {
 /**
  * Convenience utility hook for tracking client cursor position.
  */
-const useXY = (): CursorPosition => {
+export const useXY = (): CursorPosition => {
 	const [pos, setPos] = useState<CursorPosition>({ x: 0, y: 0 });
 	const updateCursorPosition = (e: MouseEvent): void => {
 		setPos({ x: e.clientX, y: e.clientY });
@@ -26,5 +26,3 @@ const useXY = (): CursorPosition => {
 		y: pos.y,
 	};
 };
-
-export default useXY;

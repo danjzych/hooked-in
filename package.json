@@ -1,36 +1,36 @@
 {
-  "name": "hooked-in",
-  "version": "0.0.0",
-  "description": "Collection of utility, effect, and headless component hooks for React and Svelte.",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "workspaces": [
-    "packages/*"
-  ],
-  "namespace": "@hooked-in",
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "lint": "tsc",
-    "test:all": "npm run test:react && npm run test:svelte",
-    "test:react": "cd packages/react && npm run test",
-    "test:svelte": "cd packages/svelte && npm run test",
-    "release": "npm run lint && npm run test && npm run build && npx changeset publish"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@changesets/cli": "^2.27.5",
-    "prettier": "3.3.2",
-    "ts-node": "^10.9.2",
-    "tsup": "^8.1.0",
-    "typescript": "^5.5.2"
-  },
-  "dependencies": {
-    "@hooked-in/react": "^0.0.0"
-  }
+	"name": "hooked-in",
+	"version": "0.0.0",
+	"description": "Collection of utility, effect, and headless component hooks for React and Svelte.",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"workspaces": [
+		"packages/*"
+	],
+	"namespace": "@hooked-in",
+	"scripts": {
+		"build": "tsup src/index.ts --format cjs,esm --dts",
+		"lint": "tsc",
+		"test:all": "npm run test:react && npm run test:svelte",
+		"test:react": "cd packages/react && npm run test",
+		"test:svelte": "cd packages/svelte && npm run test",
+		"release": "npm run lint && npm run test && npm run build && npx changeset publish"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@changesets/cli": "^2.27.5",
+		"prettier": "3.3.2",
+		"ts-node": "^10.9.2",
+		"tsup": "^8.1.0",
+		"typescript": "^5.5.2"
+	},
+	"dependencies": {
+		"@hooked-in/react": "^0.0.0"
+	}
 }

@@ -1,13 +1,13 @@
-import './App.css'
-import XY from './components/XY'
+import XY from './components/XY';
+import './App.css';
 
 function App() {
-
-  return (<>
-  <h1>@hooked-in/react</h1>
-    <XY />
-  </>)
-
+	return (
+		<>
+			<h1>@hooked-in/react</h1>
+			<XY />
+		</>
+	);
 }
 
-export default App
+export default App;

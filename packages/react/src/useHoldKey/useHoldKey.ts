@@ -10,9 +10,9 @@ export const useHoldKey = (
 	const isHeld = useDebounceValue(_isHeld, delay);
 
 	const handleKeydown = (e: KeyboardEvent) => {
-		console.log('hello');
 		if (e.key === key) setIsHeld(true);
 	};
+
 	const handleKeyup = (e: KeyboardEvent) => {
 		if (e.key === key) setIsHeld(false);
 	};

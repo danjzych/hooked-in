@@ -1,0 +1,30 @@
+{
+  "name": "@hooked-in/svelte",
+  "version": "0.0.0",
+  "description": "hooked-in library for Svelte",
+  "main": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "keywords": [
+    "svelte",
+    "actions",
+    "hooks"
+  ],
+  "author": "Daniel Zych",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/svelte": "^5.2.1",
+    "@testing-library/user-event": "^14.5.2",
+    "jsdom": "^24.1.1",
+    "tsup": "^8.2.4",
+    "vitest": "^2.0.5"
+  },
+  "peerDependencies": {
+    "svelte": "^4"
+  }
+}

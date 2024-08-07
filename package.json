@@ -13,7 +13,8 @@
 	],
 	"namespace": "@hooked-in",
 	"scripts": {
-		"build": "tsup src/index.ts --format cjs,esm --dts",
+		"build:all": "npm run build:react",
+		"build:react": "cd packages/react && npm run build",
 		"lint": "tsc",
 		"test:all": "npm run test:react",
 		"test:react": "cd packages/react && npm run test",

@@ -12,8 +12,9 @@
 	"scripts": {
 		"build:all": "npm run build:react",
 		"build:react": "cd packages/react && npm run build",
+		"build:svelte": "cd packages/svelte && npm run build",
 		"lint": "tsc",
-		"test:all": "npm run test:react",
+		"test:all": "npm run test:react && npm run test:svelte",
 		"test:react": "cd packages/react && npm run test",
 		"test:svelte": "cd packages/svelte && npm run test",
 		"release": "npm run lint && npm run test && npm run build && npx changeset publish"
@@ -27,9 +28,6 @@
 		"ts-node": "^10.9.2",
 		"tsup": "^8.1.0",
 		"typescript": "^5.5.2"
-	},
-	"dependencies": {
-		"@hooked-in/react": "^0.0.0"
 	},
 	"overrides": {
 		"vite": {

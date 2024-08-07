@@ -1,4 +1,4 @@
-import { useEffect, useState, useImperativeHandle } from 'react';
+import { useEffect, useState } from 'react';
 import { useDebounceValue } from '../index';
 
 export const useHoldKey = (

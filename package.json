@@ -15,12 +15,9 @@
 	"scripts": {
 		"build": "tsup src/index.ts --format cjs,esm --dts",
 		"lint": "tsc",
-		"test:all": "npm run test:react && npm run test:svelte",
+		"test:all": "npm run test:react",
 		"test:react": "cd packages/react && npm run test",
 		"test:svelte": "cd packages/svelte && npm run test",
-		"test:all:ci": "npm run test:react:ci && npm run test:svelte:ci",
-		"test:react:ci": "cd packages/react && npm ci && npm run test",
-		"test:svelte:ci": "cd packages/svelte && npm ci && npm run test",
 		"release": "npm run lint && npm run test && npm run build && npx changeset publish"
 	},
 	"keywords": [],

@@ -20,7 +20,7 @@ const formatCommas = (s: string) => {
 	return formatter.format(Number(s.replaceAll(',', '')));
 };
 
-const useCommaInput = (initialValue: string, cb?: Function) => {
+export const useCommaInput = (initialValue: string, cb?: Function) => {
 	const [value, setValue] = useState(initialValue);
 
 	const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -39,5 +39,3 @@ const useCommaInput = (initialValue: string, cb?: Function) => {
 
 	return { value, onKeyDown: handleKeyDown, onChange: handleChange };
 };
-
-export default useCommaInput;

@@ -8,7 +8,7 @@ const HoldKey = () => {
 	return (
 		<section>
 			<h2>
-				<code>useDebounceValue</code>
+				<code>useHoldKey</code>
 			</h2>
 			<p>
 				Key <code>Shift</code> is held for 500ms: {String(isHeld)}

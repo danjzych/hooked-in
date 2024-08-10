@@ -3,7 +3,7 @@ import {useCommaInput} from '@hooked-in/react'
 
 const Comma = () => {
 	const [invalidKeyCount, setInvalidKeyCount] = useState(0)
-    const props = useCommaInput('', () => setInvalidKeyCount(invalidKeyCount + 1))
+    const {value, onKeyDown, onChange} = useCommaInput('', () => setInvalidKeyCount(invalidKeyCount + 1))
 
 	return (
 		<section>
@@ -11,12 +11,12 @@ const Comma = () => {
 				<code>useComma</code>
 			</h2>
 			<p>
-                Value formatted: {props.value}
+                Value formatted: {value}
 			</p>
 			<p>
-				Number of non-digit characters prevented: {invalidKeyCount}
+				Number of non-digit characters prevented, as tracked by callback function: {invalidKeyCount}
 			</p>
-			<input {...props} maxLength={10} />
+			<input value={value} onKeyDown={onKeyDown} onChange={onChange} maxLength={10} type='numeric' />
 		</section>
 	);
 };

@@ -1,6 +1,6 @@
 {
 	"name": "@hooked-in/react",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "hooked-in library for React",
 	"main": "./dist/index.js",
 	"type": "module",

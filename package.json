@@ -1,6 +1,5 @@
 {
 	"name": "hooked-in",
-	"version": "0.0.0",
 	"description": "Collection of utility, effect, and headless component hooks for React and Svelte.",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",

@@ -15,7 +15,7 @@
 	"scripts": {
 		"build:all": "npm run build:react",
 		"build:react": "cd packages/react && npm run build",
-		"lint": "tsc",
+		"lint": "tsc --jsx react-jsx",
 		"test:all": "npm run test:react",
 		"test:react": "cd packages/react && npm run test",
 		"test:svelte": "cd packages/svelte && npm run test",

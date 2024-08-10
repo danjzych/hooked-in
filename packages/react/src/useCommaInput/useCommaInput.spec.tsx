@@ -3,6 +3,7 @@ import { renderHook, render, act, screen } from '@testing-library/react';
 import { KeyboardEvent, FormEvent } from 'react';
 import { useCommaInput } from './useCommaInput';
 import userEvent from '@testing-library/user-event';
+import { clear } from '@testing-library/user-event/dist/cjs/utility/clear.js';
 
 const mockPreventDefault = vi.fn();
 
@@ -11,14 +12,16 @@ describe('useCommaInput', () => {
 		vi.resetAllMocks();
 	});
 
-	it('should props of value, onKeyDown, and onChange', () => {
+	it('should value state, props, and clear function', () => {
 		const initialProps = { value: '' };
 		const { result } = renderHook(({ value }) => useCommaInput(value), {
 			initialProps,
 		});
 		expect(result.current.value).toBeTypeOf('string');
-		expect(result.current.onKeyDown).toBeTypeOf('function');
-		expect(result.current.onChange).toBeTypeOf('function');
+		expect(result.current.commaInputProps.onKeyDown).toBeTypeOf('function');
+		expect(result.current.commaInputProps.onChange).toBeTypeOf('function');
+		expect(result.current.commaInputProps.value).toBeTypeOf('string');
+		expect(result.current.clear).toBeTypeOf('function');
 	});
 
 	describe('handleKeyDown', () => {
@@ -32,7 +35,7 @@ describe('useCommaInput', () => {
 				preventDefault: mockPreventDefault,
 			} as unknown as KeyboardEvent<HTMLInputElement>;
 
-			result.current.onKeyDown(mockKeyboardEvent);
+			result.current.commaInputProps.onKeyDown(mockKeyboardEvent);
 			expect(mockPreventDefault).toHaveBeenCalled();
 		});
 
@@ -51,7 +54,7 @@ describe('useCommaInput', () => {
 				preventDefault: mockPreventDefault,
 			} as unknown as KeyboardEvent<HTMLInputElement>;
 
-			result.current.onKeyDown(mockKeyboardEvent);
+			result.current.commaInputProps.onKeyDown(mockKeyboardEvent);
 			expect(mockCbFn).toHaveBeenCalled();
 		});
 
@@ -66,7 +69,7 @@ describe('useCommaInput', () => {
 				preventDefault: mockPreventDefault,
 			} as unknown as KeyboardEvent<HTMLInputElement>;
 
-			result.current.onKeyDown(mockKeyboardEvent);
+			result.current.commaInputProps.onKeyDown(mockKeyboardEvent);
 			expect(mockPreventDefault).not.toHaveBeenCalled();
 		});
 	});
@@ -84,7 +87,7 @@ describe('useCommaInput', () => {
 				},
 			} as unknown as FormEvent<HTMLInputElement>;
 
-			act(() => result.current.onChange(mockChangeEvent));
+			act(() => result.current.commaInputProps.onChange(mockChangeEvent));
 			expect(result.current.value).toEqual('1,000');
 		});
 
@@ -100,17 +103,29 @@ describe('useCommaInput', () => {
 				},
 			} as unknown as FormEvent<HTMLInputElement>;
 
-			act(() => result.current.onChange(mockChangeEvent));
+			act(() => result.current.commaInputProps.onChange(mockChangeEvent));
 			expect(result.current.value).toEqual('');
 		});
 	});
 
+	describe('clear', () => {
+		it('clears input value', () => {
+			const initialProps = { value: '1' };
+			const { result } = renderHook(({ value }) => useCommaInput(value), {
+				initialProps,
+			});
+
+			act(() => result.current.clear());
+			expect(result.current.value).toEqual('');
+		})
+	})
+
 	describe('DOM integration', () => {
     it('integrates correctly with HTML input element', async () => {
       const TestComponent = () => {
-        const props = useCommaInput('')
+        const {commaInputProps, clear} = useCommaInput('')
 
-        return <input {...props} data-testid="test_input" />
+        return (<><input {...commaInputProps} data-testid="test_input" /><button onClick={() => clear()} data-testid="clear_button" /></>)
       }
 	  const user = userEvent.setup()
 
@@ -119,6 +134,10 @@ describe('useCommaInput', () => {
 	  const input = screen.getByTestId("test_input") as HTMLInputElement
 	  await user.type(input, '1000')
 	  expect(input.value).toEqual('1,000')
+
+	  const clearButton = screen.getByTestId('clear_button') as HTMLButtonElement
+	  await user.click(clearButton)
+	  expect(input.value).toEqual('')
     })
   });
 });

@@ -37,5 +37,17 @@ export const useCommaInput = (initialValue: string, cb?: Function) => {
 		setValue(value ? formatCommas(value) : '');
 	};
 
-	return { value, onKeyDown: handleKeyDown, onChange: handleChange };
+	const clear = () => {
+		setValue('');
+	};
+
+	return {
+		commaInputProps: {
+			value,
+			onKeyDown: handleKeyDown,
+			onChange: handleChange,
+		},
+		value,
+		clear,
+	};
 };

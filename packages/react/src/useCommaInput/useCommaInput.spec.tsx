@@ -1,7 +1,8 @@
 import { describe, expect, it, vi, afterEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, render, act, screen } from '@testing-library/react';
 import { KeyboardEvent, FormEvent } from 'react';
 import { useCommaInput } from './useCommaInput';
+import userEvent from '@testing-library/user-event';
 
 const mockPreventDefault = vi.fn();
 
@@ -103,4 +104,21 @@ describe('useCommaInput', () => {
 			expect(result.current.value).toEqual('');
 		});
 	});
+
+	describe('DOM integration', () => {
+    it('integrates correctly with HTML input element', async () => {
+      const TestComponent = () => {
+        const props = useCommaInput('')
+
+        return <input {...props} data-testid="test_input" />
+      }
+	  const user = userEvent.setup()
+
+	  render(<TestComponent />)
+
+	  const input = screen.getByTestId("test_input") as HTMLInputElement
+	  await user.type(input, '1000')
+	  expect(input.value).toEqual('1,000')
+    })
+  });
 });

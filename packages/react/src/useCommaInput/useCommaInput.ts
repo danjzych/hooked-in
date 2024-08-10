@@ -25,7 +25,7 @@ export const useCommaInput = (initialValue: string, cb?: Function) => {
 
 	const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
 		if (isPermissableNonPrintableKey(e)) return;
-		if (!Number(e.key)) {
+		if (Number.isNaN(Number(e.key))) {
 			e.preventDefault();
 			if (cb) cb();
 		}
